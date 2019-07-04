@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+ 	<h3>Skapa tidtabell</h3>
+	
+	<form action="/config/{{ station }}/" method="POST">
+		{{ form.csrf_token }}
+		{{ form.offset.label }} {{ form.offset() }} och 
+		{{ form.timewindow() }} {{ form.timewindow.label }}<br>
+		I riktning {{ form.direction1() }} {{ form.direction1.label }}
+		{{ form.direction2() }} {{ form.direction2.label }}<br>
+		Med {% for subfield in form.transport %}
+		{{ subfield }} {{ subfield.label }}
+		{% endfor %}<br>
+		{{ form.submit() }}
+	</form>
+{% endblock %}

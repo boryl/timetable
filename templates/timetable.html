@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% if departures['noresponse'] != 'true'  %}
+{% block title %}{{ departures[line][0]['GroupOfLine'] }} från {{ departures[line][0]['Station'] }}{% endblock %}
+{% endif %}
+
+{% block content %}
+{% if departures['noresponse'] != 'true' %}
+ 	<h3>{{ departures[line][0]['GroupOfLine'] }}</h3>
+	<h4>Från {{ departures[line][0]['Station'] }}</h4>
+	<ul>
+	{% for departure in departures[line] %}
+		
+		<li>
+			{% if departure.ExpectedDateTime %}
+				{{ departure.ExpectedDateTime }} 
+				- 
+			{% endif %}
+			{{ departure.Destination }} 
+			{% if departure.DisplayTime %}
+				({{ departure.DisplayTime }}) 
+			{% endif %}
+			</li>
+	{% endfor %}
+	</ul>
+	{% for key, value in links.items() %}
+		<a href="{{ value }}">{{ departures[key][0]['GroupOfLine'] }}</a><br>
+	{% endfor %}
+{% else %}
+<p>Inga avgångar hittade</p>
+{% endif %}
+{% endblock %}

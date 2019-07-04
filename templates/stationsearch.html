@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+
+ 	<h3>Sök station</h3>
+	<form method="POST" action="/">
+		{{ form.csrf_token }}
+		{{ form.search.label }}<br>{{ form.search(size=20) }}
+		{{ form.submit() }}
+	</form>
+	{% for error in form.search.errors %}
+	<span class="error">{{ error }}</span>
+	{% endfor %}
+	<ul>
+	{% for station in stations.ResponseData %}
+	    <li><strong>{{ station.Name }}</strong><br>
+			<a href="/{{ station.SiteId }}/metro/">Tunnelbana</a>, <a href="/{{ station.SiteId }}/train/">pendeltåg</a> eller <a href="/config/{{ station.SiteId }}/">skapa en egen tidtabell</a></li>
+	{% endfor %}
+	</ul>
+{% endblock %}

@@ -1,0 +1,31 @@
+body {
+  padding-top: 3rem;
+	padding-bottom: 1rem;
+	background: black;
+	/*e41f25
+	21b259
+	0691d2*/
+	color: white;
+}
+
+.blue 	{background: #0691d2;}
+.red 		{background: #e41f25;}
+.green 	{background: #21b259;}
+.train 	{background: #e930a2;}
+
+
+
+form {
+  padding-bottom: 1rem;
+}
+a, a:hover {
+  color: white;
+	text-decoration: underline;
+}
+span.error {
+  font-weight: bold;
+}
+ul li {
+	padding-bottom: 0.2rem;
+	
+}

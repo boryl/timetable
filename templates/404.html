@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+ 	<h3>Hoppsan!</h3>
+	<p>Den här sidan finns inte. <a href="{{ url_for('startsearch') }}">Gå tillbaka till startsidan</a> eller prova att trycka på "tillbaka"-knappen i din webbläsare.</p>  
+{% endblock %}
